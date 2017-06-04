@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Category } from './../category';
 
@@ -10,6 +10,12 @@ import { Category } from './../category';
 export class CategoryBoxComponent {
 
   @Input() categories: Category[];
+  @Output() onClickCategory: EventEmitter<Category>;
+
+  constructor() {
+    this.onClickCategory = new EventEmitter<Category>();
+  }
+
 
   /*-------------------------------------------------------------------------------------------------------------------|
    | ~~~ Yellow Path ~~~                                                                                               |
@@ -18,5 +24,9 @@ export class CategoryBoxComponent {
    | de eventos; la idea es enviar al componente padre la categoría sobre el cuál se ha hecho clic. Y puesto que dicho |
    | clic se realiza en el template de este componente, necesitas, además, un manejador para el mismo.                 |
    |-------------------------------------------------------------------------------------------------------------------*/
+
+  notifyCategoryHandler(category: Category): void {
+    this.onClickCategory.emit(category);
+  }
 
 }

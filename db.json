@@ -280,6 +280,23 @@
         2
       ],
       "id": 10
+    },
+    {
+      "title": "prueba",
+      "intro": "hola q ase",
+      "body": "aqui estamoss",
+      "media": "",
+      "likes": [],
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
+      "publicationDate": 1496575719537,
+      "id": 11
     }
   ],
   "categories": [

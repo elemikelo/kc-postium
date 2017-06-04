@@ -1,8 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NativeWindow } from './../window';
 import { Post } from './../post';
+import { User } from './../user';
+import { Category } from './../category';
+
+
 
 @Component({
   templateUrl: './post-details.component.html',
@@ -13,6 +17,7 @@ export class PostDetailsComponent implements OnInit {
   post: Post;
 
   constructor(
+    private _router: Router,
     private _activatedRoute: ActivatedRoute,
     @Inject(NativeWindow) private _window) { }
 
@@ -33,6 +38,11 @@ export class PostDetailsComponent implements OnInit {
    | pasando como parámetro el identificador del autor.                                                            |
    |---------------------------------------------------------------------------------------------------------------*/
 
+   goToUserPosts(user: User): void {
+     this._router.navigate(['posts', 'users', user.id]);
+   }
+
+
   /*--------------------------------------------------------------------------------------------------------------------|
    | ~~~ Yellow Path ~~~                                                                                                |
    |--------------------------------------------------------------------------------------------------------------------|
@@ -41,4 +51,7 @@ export class PostDetailsComponent implements OnInit {
    | pasando como parámetro el identificador de la categoría.                                                           |
    |--------------------------------------------------------------------------------------------------------------------*/
 
+   goToCategoryEvent(category: Category): void {
+     this._router.navigate(['posts', 'categories', category.id]);
+   }
 }
